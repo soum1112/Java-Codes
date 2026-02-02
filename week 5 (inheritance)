@@ -1,0 +1,81 @@
+#different types of inner class: NULL, etc. (read at home)
+#inheritance in java (using keyword "extend")
+
+#Single inheritance: 
+class Animal{
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+public class Prac1 {
+    public static void main(String[] args) {
+        Dog a = new Dog();
+        a.eat();
+        a.bark();
+    }
+}
+
+# Multilevel Inheritance
+class Grandparent {
+    void greet() {
+        System.out.println("Grandparent class method");
+    }
+}
+
+class Parent extends Grandparent {
+    void display() {
+        System.out.println("Parent class method");
+    }
+}
+
+class Child extends Parent {
+    void show() {
+        System.out.println("Child class method");
+    }
+}
+
+public class Prac1 {
+    public static void main(String[] args) {
+        Child a = new Child();
+        a.greet();
+        a.display();
+        a.show();
+    }
+}
+
+#Hierarchical Inheritance
+class Animal{
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Cat extends Animal {
+    void meow() {
+        System.out.println("Cat is meowing");
+    }
+}
+
+public class Prac1 {
+    public static void main(String[] args) {
+        Dog a = new Dog();
+        Cat b = new Cat();
+        a.eat();
+        a.bark();
+        b.eat();
+        b.meow();
+    }
+}

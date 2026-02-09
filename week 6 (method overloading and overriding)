@@ -1,0 +1,252 @@
+/*hw: implement difference b/w abstract class and interface*/
+/*difference b/w overloading and overriding: 
+Overriding: Same method name and parameters in different (parent–child) classes.
+Overloading: Same method name with different parameters in the same class./
+
+//Method Overloading: same method name but different parameters
+1]
+class Calculator {
+    int add (int a, int b) {
+        return a + b;
+    }
+    double add (double a, double b) {
+        return a + b;
+    }
+    int add (int a, int b, int c) {
+        return a + b + c;
+    }
+}
+class Prac1 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5, 10));  //calls int (1st) version
+        System.out.println(calc.add(5.5, 10.5));  //calls double version
+        System.out.println(calc.add(5, 10, 15)); //calls int (2nd) version
+    }
+}
+
+2]
+class Calculator {
+    int sub (int a, int b) {
+        return a - b;
+    }
+    double sub (double a, double b) {
+        return a - b;
+    }
+    int sub (int a, int b, int c) {
+        return a - b - c;
+    }
+}
+class Prac1 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.sub(5, 10));  //calls int (1st) version
+        System.out.println(calc.sub(5.5, 10.5));  //calls double version
+        System.out.println(calc.sub(5, 10, 15)); //calls int (2nd) version
+    }
+} 
+
+3]
+class Calculator {
+    int mul (int a, int b) {
+        return a * b;
+    }
+    double mul (double a, double b) {
+        return a * b;
+    }
+    int mul (int a, int b, int c) {
+        return a * b * c;
+    }
+}
+class Prac1 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.mul(5, 10));  //calls int (1st) version
+        System.out.println(calc.mul(5.5, 10.5));  //calls double version
+        System.out.println(calc.mul(5, 10, 15)); //calls int (2nd) version
+    }
+}
+
+4]
+class Calculator {
+    int div (int a, int b) {
+        return a / b;
+    }
+    double div (double a, double b) {
+        return a / b;
+    }
+    int div (int a, int b, int c) {
+        return a / b / c;
+    }
+}
+class Prac1 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.div(26, 13));  //calls int (1st) version
+        System.out.println(calc.div(16.2, 2.0));  //calls double version
+        System.out.println(calc.div(55, 11, 5)); //calls int (2nd) version
+    }
+}
+
+/*Method Overriding*/
+/*inheritance concept is used*/
+1]
+class BankAccount {
+    double getInterestRate() {
+        return 0.0; //default interest rate
+    }
+}
+class SavingsAccount extends BankAccount {
+    double getInterestRate() {
+        return 4.5;        //savings interest rate
+    }
+}
+class CurrentAccount extends BankAccount {
+    @Override                 //optional to write, but good practice to indicate that we are overriding a method
+    double getInterestRate() {
+        return 3.0;
+    }
+}
+
+class Prac1 {
+    public static void main(String[] args) {
+        BankAccount acc1 = new BankAccount();
+        BankAccount acc2 = new SavingsAccount();
+        BankAccount acc3 = new CurrentAccount();
+
+        System.out.println("BankAccount interest rate: " + acc1.getInterestRate());
+        System.out.println("SavingsAccount interest rate: " + acc2.getInterestRate());
+        System.out.println("CurrentAccount interest rate: " + acc3.getInterestRate());
+    }
+}
+
+2]
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+
+    void move() {
+        System.out.println("Animal moves");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+
+    @Override
+    void move() {
+        System.out.println("Dog runs");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+
+    @Override
+    void move() {
+        System.out.println("Cat walks");
+    }
+}
+
+class Fish extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Fish makes bubbles");
+    }
+
+    @Override
+    void move() {
+        System.out.println("Fish swims");
+    }
+}
+
+class Prac1 {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        Animal a2 = new Cat();
+        Animal a3 = new Fish();
+
+        a1.sound();
+        a1.move();
+
+        a2.sound();
+        a2.move();
+
+        a3.sound();
+        a3.move();
+    }
+}
+
+3]
+class Car {
+    void fuelType() {
+        System.out.println("Generic fuel");
+    }
+
+    void maxSpeed() {
+        System.out.println("Average speed");
+    }
+}
+
+class PetrolCar extends Car {
+    @Override
+    void fuelType() {
+        System.out.println("Petrol");
+    }
+
+    @Override
+    void maxSpeed() {
+        System.out.println("180 km/h");
+    }
+}
+
+class DieselCar extends Car {
+    @Override
+    void fuelType() {
+        System.out.println("Diesel");
+    }
+
+    @Override
+    void maxSpeed() {
+        System.out.println("160 km/h");
+    }
+}
+
+class ElectricCar extends Car {
+    @Override
+    void fuelType() {
+        System.out.println("Electric");
+    }
+
+    @Override
+    void maxSpeed() {
+        System.out.println("200 km/h");
+    }
+}
+
+class Prac1 {
+    public static void main(String[] args) {
+        Car c1 = new PetrolCar();
+        Car c2 = new DieselCar();
+        Car c3 = new ElectricCar();
+
+        c1.fuelType();
+        c1.maxSpeed();
+
+        c2.fuelType();
+        c2.maxSpeed();
+
+        c3.fuelType();
+        c3.maxSpeed();
+    }
+}
+
+
+

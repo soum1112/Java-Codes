@@ -1,0 +1,55 @@
+/*also known as Runtime polymorphism*/
+/*allows method to be overridden in the subclass and called through superclass reference*/
+1]
+class Parent {
+    void show() {
+        System.out.println("Parent's show method");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child's show method");
+        super.show(); // Call the Parent's show method
+    }
+}
+
+class Prac1 {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.show(); // This will call the Child's show method due to dynamic method dispatch
+    }
+}
+
+2]
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Puppy extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Puppy barks");
+        super.sound(); // Call the Parent's sound method
+    }
+}
+
+class babieeKitty extends Animal {
+    @Override
+    void sound() {
+        System.out.println("mauiii mauiii");
+        super.sound(); // Call the Parent's sound method
+    }
+}
+
+class Prac1 {
+    public static void main(String[] args) {
+        Animal d = new Puppy();
+        d.sound(); // This will call the Puppy's sound method due to dynamic method dispatch
+        Animal c = new babieeKitty();
+        c.sound(); // This will call the babieeKitty's sound method due to dynamic method dispatch
+    }
+}

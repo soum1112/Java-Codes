@@ -1,0 +1,121 @@
+/*in notepad: save file as Demo.java (filetype: all files)*/
+/*Make sure to be in correct directory*/
+package mypack;
+public class Demo
+{
+public static void main(String [] args)
+{
+	System.out.println("Hello World!!");
+}
+}
+/*compile file in cmd prompt using : javac -d . Demo.java, run file:java mypack.Demo*/
+
+
+/*in vs code: new folder: myjavacodes, another folder:calca, inside it file:Demo.java*/
+/*in terminal: javac -d . calca\demo.java, java calca.Demo*/
+1]
+package calca;
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Hello!!!!");
+    }
+}
+2]
+package calca;
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Hello SY CSE C Div!!");
+    }
+}
+
+
+/*make another method package(folder) in myjavacodes folder, add AddDemo.java file to it*/
+package addmethods;
+
+public class AddDemo {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+/*in Demo.java*/
+package calca.abc;
+
+import addmethods.AddDemo;
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Hello SY CSE C Div!!");
+        AddDemo ad = new AddDemo();
+        System.out.println(ad.add(10, 20));
+    }
+}   
+/*run it, Output: 
+Hello SY CSE C Div!!
+30*/
+
+/*another package folder in myjavacodes: sycsc, file in it: C.java*/
+package sycsc;
+
+public class C {
+    public void showInfo() {
+        System.out.println("Inside class C!!");
+    }
+}
+/*in Demo.java*/
+package calca.abc;
+
+import addmethods.AddDemo;
+import sycsc.C;
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Hello SY CSE C Div!!");
+        AddDemo ad = new AddDemo();
+        System.out.println(ad.add(10, 20));
+        C c = new C();
+        c.showInfo();
+    }
+}
+
+/*another package folder in myjavacodes: scientificCalc, file in it: Operations.java*/
+package scientificCalc;
+
+public class Operations {
+
+    public void add(int a, int b) {
+        System.out.println("Addition: " + (a + b));
+    }
+
+    public void subtract(int a, int b) {
+        System.out.println("Subtraction: " + (a - b));
+    }
+
+    public void multiply(int a, int b) {
+        System.out.println("Multiplication: " + (a * b));
+    }
+
+    public void divide(int a, int b) {
+        if (b != 0) {
+            System.out.println("Division: " + (a / b));
+        } else {
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+/*in Demo.java*/
+package calca.abc;
+
+import scientificCalc.Operations;
+
+public class Demo {
+    public static void main(String[] args) {
+        Operations op = new Operations();
+        op.add(10, 20);
+        op.subtract(30, 15);
+        op.multiply(5, 6);
+        op.divide(40, 8);
+
+    }
+}
